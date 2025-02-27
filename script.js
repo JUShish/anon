@@ -70,7 +70,7 @@ document.addEventListener("DOMContentLoaded", function () {
     async function fetchIP() {
         if (localStorage.getItem("demoMode")) return;
         try {
-            let response = await fetch("https://api.myip.com/");
+            let response = await fetch("https://api64.ipify.org?format=json");
             let data = await response.json();
             document.getElementById("ip").textContent = data.ip;
         } catch (error) {
@@ -108,4 +108,3 @@ document.addEventListener("DOMContentLoaded", function () {
         setNickname(localStorage.getItem("nickname"));
     }
 });
-
