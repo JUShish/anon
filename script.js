@@ -57,6 +57,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     logoutBtn.addEventListener("click", function () {
         localStorage.removeItem("nickname");
+        localStorage.removeItem("demoMode");
         location.reload();
     });
 
@@ -69,7 +70,7 @@ document.addEventListener("DOMContentLoaded", function () {
     async function fetchIP() {
         if (localStorage.getItem("demoMode")) return;
         try {
-            let response = await fetch("https://api64.ipify.org?format=json");
+            let response = await fetch("https://api.myip.com/");
             let data = await response.json();
             document.getElementById("ip").textContent = data.ip;
         } catch (error) {
@@ -102,9 +103,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
     document.addEventListener("click", (event) => logAction(`Клик (${event.clientX}, ${event.clientY})`));
     document.addEventListener("keydown", () => logAction("Нажатие клавиши"));
-    document.addEventListener("scroll", () => logAction("Прокрутка страницы"));
 
     if (localStorage.getItem("nickname")) {
         setNickname(localStorage.getItem("nickname"));
     }
 });
+
